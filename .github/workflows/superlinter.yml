@@ -1,12 +1,17 @@
-name: example-workflow
-on: [push]
+name: Super-Linter
+
+on: push
+
 jobs:
-  production-deploy:
-    if: github.repository == 'octo-org/octo-repo-prod'
+  super-lint:
+    name: Lint code base
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-      - run: npm install -g bats
+       -name: Checkout code
+        uses: actions/checkout@v2
+        
+       -name: Run Super-Linter
+        uses: github/super-linter@v3
+        env:
+          DEFAULT_BRANCH: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
