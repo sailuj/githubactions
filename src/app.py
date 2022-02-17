@@ -3,7 +3,7 @@ steps:
 - uses: actions/setup-java@v2
   with:
     distribution: 'temurin'
-    java-version: '11'
+    java-version: '8'
     cache: 'maven'
 - name: Build with Maven
   run: mvn -B package --file pom.xml
