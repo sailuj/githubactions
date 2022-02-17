@@ -1,16 +1,34 @@
-steps:
-- uses: actions/checkout@v2
-- uses: actions/setup-java@v2
-  with:
-    distribution: 'temurin'
-    java-version: '8'
-    cache: 'maven'
-- name: Build with Maven
-  run: mvn -B package --file pom.xml
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-war-plugin</artifactId>
-    <configuration>
-        <webXml>WebContent\WEB-INF\web.xml</webXml>
-    </configuration>
-</plugin>
+package com.mcnz.rps;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+
+public class ScoreTest {
+
+//	@Test
+//	public void testIncreaseWins() {
+//		Score score = new Score();
+//		score.increaseWins();
+//		Assert.assertTrue(score.getWins()>0);
+//	} 
+	@Test
+	public void testIncreaseLosses() {
+		Score score = new Score();
+		score.increaseLosses();
+		Assert.assertTrue(score.getLosses()>0);
+	}
+	@Test
+	public void testIncreaseTies() {
+		Score score = new Score();
+		score.increaseTies();
+		Assert.assertTrue(score.getTies()>0);
+	}
+	
+	@Test
+	public void testToString() {
+		Score score = new Score();
+		Assert.assertTrue(score.toString().length()>0);
+	}
+
+}
